@@ -1,0 +1,159 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+.fontcolor{
+  color: rgb(52, 70, 87);
+}
+body *{
+  font-family: arial;
+}
+header {
+  width: 100%;
+  height: 4em;
+  padding: 0.7em 0;
+}
+header > *{
+  float: left;
+}
+nav{
+  width: 70%;
+  float: left;
+}
+nav > ul{
+  width: 100%;
+  text-align: center;
+  margin-left: 15%;
+}
+nav > ul > li{
+  float: left;
+  padding: 0 3%;
+  list-style-type: none;
+}
+header > *:first-child{
+  padding: 1em 2em;
+  text-decoration: none;
+  width: 15%
+}
+header > *:last-child{
+  padding: 0.7em 2em;
+  text-decoration: none;
+  width: 8%;
+  height: 2.5em;
+  color: white;
+  background: rgb(52, 70, 87);
+  margin-top: 0.2em;
+}
+#welcome{
+  position: absolute;
+  top:0;
+  z-index: -1;
+  background: rgb(246, 249, 252);
+  height: 65em;
+}
+#welcome > *{
+  float: left;
+}
+#welcome > section:first-of-type{
+  margin-top: 10em;
+  width: 40%;
+}
+#welcome > img{
+  width: 50%;
+  margin-left: 6.4%;
+  margin-top: 12%;
+}
+#welcome > section{
+  margin-left: 3em;
+}
+#welcome > section > span{
+  font-size: 0.5em;
+}
+#welcome > section > h2{
+  font-size: 2em;
+}
+#welcome > section > div > input{
+  height: 2.5em;
+}
+#welcome > section > div > a {
+  text-decoration: none;
+  padding: 0.75em 2em;
+  background: rgb(52, 70, 87);
+  color: white;
+}
+#welcome > section > p{
+  line-height: 1.5em;
+  width: 60%;
+}
+#welcome > img + section{
+  margin-top: 5em;
+  height: 10em;
+  clear: both;
+}
+.quad{
+  width: 25%;
+  float: left;
+  padding-right: 5%;
+}
+.quad > img{
+  width: 2em;
+  height: 2em;
+}
+.quad > span{
+  display: block;
+  margin-top: 1em;
+}
+.quad > p {
+  margin-top: 1em;
+  line-height: 1.5em;
+}
+.quad > a{
+  font-weight: bolder;
+  text-decoration: none;
+}
+body > section + section{
+  padding-left: 3em;
+  padding-top: 3em;
+  margin-top: 61em;
+}
+body > section + section > h1{
+  font-size: 3em;
+}
+body > section + section > p{
+  width: 50%;
+  line-height: 1.5em;
+}
+footer {
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

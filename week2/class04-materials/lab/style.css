@@ -1,0 +1,50 @@
+body{
+  border: solid #50c639 4px;
+  background-color: #84CBE9;
+  margin: 25px;
+  padding: 40px;
+  font-family: georgia;
+  min-height: 580px;
+}
+h1{
+  color: white;
+  font-style: italic;
+  font-weight:lighter;
+  text-align: center;
+}
+section{
+}
+h2{
+  color: white;
+  font-weight: bold;
+}
+img{
+  max-width: 30%;
+  float: right;
+  max-height: 40%;
+}
+ul{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+li{
+  padding: 3px;
+}
+p{
+  color: white;
+}
+#footer-section{
+  clear: right;
+}
+.footer-links{
+  color: #4ACC99;
+}
+#about{
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+#portfolio{
+  color: #4ACC99;
+}

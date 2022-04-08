@@ -1,0 +1,270 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+
+}
+.oswald{
+  font-family: oswald;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header{
+  height: 3em;
+  width: 100%;
+}
+nav{
+  background: rgb(105, 118, 136);
+  height: 3em;
+  width: 100%;
+}
+nav > *{
+  float: left;
+}
+nav > ul{
+  width: 20%;
+  margin-top: 1.5em;
+}
+nav > ul > li{
+  float: left;
+  list-style-type: none;
+
+}
+nav > ul > li > a {
+  text-decoration: none;
+  color: white;
+  margin-left: 1em;
+}
+nav > img{
+  width: 60%;
+}
+nav > a{
+  padding: 1em;
+  text-align: right;
+  width: 7%;
+  text-decoration: none;
+  color: rgb(105, 118, 136);
+  background: white;
+  border-radius: 0.5em;
+  margin-left: 10%;
+  margin-top: 1em;
+}
+img{
+  margin-top: 0.6em;
+  width: 25px;
+  height: 25px;
+}
+#welcome{
+  background: rgb(105, 118, 136);
+  position: relative;
+  top: 0;
+  z-index: -1;
+  padding-top: 8em;
+  height: 700px;
+}
+#welcome > h1{
+  text-align: center;
+  font-size: 4em;
+  width: 90%;
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+  color: white;
+}
+#welcome > p{
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 1em;
+  color: white;
+  font-size: 1.4em;
+  line-height: 1.4em;
+}
+#welcome > div{
+  margin-top: 4em;
+  margin-left: 40%;
+  width: 20%;
+  height: 3em;
+  color: white;
+}
+#welcome > div > img{
+  width: 2em;
+  height: 2em;
+  margin-top: 0.4em;
+  float: left;
+}
+#welcome > div > span{
+  float: left;
+  padding: 0.4em 0 0 1em;
+  font-size: 1.5em;
+}
+#welcome > span{
+  display: block;
+  margin-top: 8em;
+  color: black;
+  text-align: center;
+  font-style: italic;
+}
+#why{
+  height: 400px;
+  background: white;
+}
+#why > h3{
+  font-size: 2em;
+  width: 5em;
+  margin: auto;
+  margin-top: 4em;
+  padding: 1em;
+}
+#why > p{
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+#diptych{
+  background: rgba(220,	223, 226);
+  height: 700px;
+}
+#diptych > div{
+  margin-top: 100px;
+  float: left;
+  width: 50%;
+  height: 500px;
+}
+#diptych > div > img{
+  background: rgb(105, 118, 136);
+  display: block;
+  margin: auto;
+  width: 80%;
+  height: 14em;
+}
+#diptych > div > h4{
+  text-align: center;
+}
+#diptych > div > p{
+  display: block;
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 2em;
+}
+#diptych > div > a{
+  display: block;
+  width: 50%;
+  height: 3.4em;
+  padding: 1em 0;
+  text-align: center;
+  margin: auto;
+  text-decoration: none;
+  border: solid grey 1px;
+  color: black;
+}
+#volunteer{
+  clear: both;
+  height: 400px;
+}
+#volunteer > h3{
+  margin-top: 6em;
+  display: block;
+  text-align: center;
+  font-size: 2em;
+}
+#volunteer > p {
+  width: 50%;
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 2em;
+}
+#volunteer > a {
+  display: block;
+  width: 12em;
+  height: 3em;
+  padding: 0.8em;
+  text-align: center;
+  margin: auto;
+  border: solid darkgrey 1px;
+  text-decoration: none;
+  color: black;
+}
+footer{
+  background: rgb(24,	31,	41)	;
+  width: 100%;
+  height: 20em;
+}
+footer > section{
+  margin: 1em 0 1em 1em;
+  width: 45%;
+  float: left;
+}
+footer > section > div {
+  margin-bottom: 1em;
+}
+footer > section > div > img{
+  margin-right: 2em;
+}
+footer > section h5{
+  color: darkgrey;
+  margin-bottom: 0.4em;
+}
+footer > section + section h5{
+  color: white;
+}
+footer > section span{
+  color: white;
+  margin-right: 2em;
+}
+footer > section + section{
+  width: 15%;
+  margin-left: 30em;
+}
+footer > div{
+  clear: both;
+  width: 98%;
+  border-top: solid white 1px;
+}
+footer > div > *{
+  float: left;
+}
+footer > div > p{
+  clear: both;
+  width: 50%;
+  font-size: 0.9em;
+  color: white;
+  border: white solid 1px;
+}
+footer > div > img{
+  margin-left: 48%;
+}
+address{
+  color: white;
+  margin-top: 2em;
+}
+em{
+  color: white;
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

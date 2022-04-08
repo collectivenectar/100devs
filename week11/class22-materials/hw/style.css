@@ -1,0 +1,8 @@
+input{
+  border: solid green 1px
+}
+a{
+  width: 5em;
+  height: 1em;
+  border: solid red 1px;
+}

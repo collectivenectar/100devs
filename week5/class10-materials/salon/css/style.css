@@ -1,0 +1,313 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header {
+  height: 4em;
+  background-color: white;
+}
+header > *{
+  float: left;
+}
+header > a{
+  width: 20%;
+  padding-left: 7.5%;
+  padding: 1.1em 7.5%;
+  text-decoration: none;
+  color: black;
+  height: 4em;
+}
+nav{
+  height: 4em;
+  width: 60%;
+  padding: 0 5%;
+}
+nav > *{
+  float: left;
+}
+nav > ul > li{
+  float: left;
+  height: 4em;
+  padding: 0.5em 0.8em;
+  list-style-type: none;
+}
+nav > ul > li > a > img{
+  width: 1em;
+  height: 1em;
+}
+header > a ~ a{
+  width: 20%;
+  padding: 1.4em 5%;
+}
+#welcome{
+  clear: both;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  background-image: url('../header-background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 1000px;
+  height: 80em;
+  width: 100%;
+}
+#welcome > h1{
+  font-size: 6em;
+  font-weight: lighter;
+  color: white;
+  padding-top: 3em;
+  padding-left: 2em;
+}
+#welcome > p{
+  padding-left: 12em;
+  color: white;
+  margin-bottom: 3em;
+}
+#welcome > a{
+  padding: 1em;
+  width: 12em;
+  color: white;
+  background: black;
+  text-decoration: none;
+  margin-left: 12em;
+}
+#welcome > div{
+  margin-top: 6em;
+  margin-left: 12em;
+  height: 28em;
+  width: 25em;
+  background: black;
+  padding-top: 3em;
+}
+#welcome > div > *{
+  color: white;
+  display: block;
+  font-size: 1.2em;
+  padding-left: 2em;
+}
+#welcome > div > span:first-of-type{
+  display: block;
+  height: 3em;
+  margin-bottom: 2em;
+  border-left: white solid 3px;
+  padding: 1em 0 1em 3em;
+}
+#welcome > div > span:nth-of-type(2){
+  margin-bottom: 1em;
+}
+strong{
+  font-size: 2em;
+  margin-right: 0.2em;
+}
+#welcome > div > span:last-of-type{
+  line-height: 3em;
+  margin-bottom: 2em;
+}
+#welcome > div > a{
+  padding: 2em;
+  margin-left: 2em;
+  width: 12em;
+  background: white;
+  color: black;
+  text-decoration: none;
+}
+#welcome + section{
+  margin-top: 80em;
+}
+#values{
+  padding: 5%  15%;
+  height: 25em;
+}
+#values > *{
+  float: left;
+  width: 33%;
+}
+#values > div > img{
+  display: block;
+  margin: auto;
+  width: 30%;
+}
+#values > div > h3{
+  width: 100%;
+  text-align: center;
+}
+#values > div > p{
+  width: 80%;
+  display: block;
+  margin: auto;
+  text-align: center;
+  line-height: 1.5em;
+}
+#hours{
+  position: absolute;
+  top: 25em;
+  right: 0;
+  color: white;
+  transform:rotate(90deg);
+}
+.photo-nav{
+  position: absolute;
+  bottom: 1em;
+  right: 8em;
+  height: 2em;
+  width: 8em;
+}
+.photo-nav > a > img{
+  float: left;
+  width: 3em;
+  height: 3em;
+  background: white;
+  border-radius: 50%;
+  margin-left: 1em;
+  padding: 1em;
+}
+#diptych{
+  background: rgb(243, 244, 246);
+  clear: both;
+  padding: 8% 15%;
+  height: 35em;
+}
+#diptych > *{
+  float: left;
+  width: 50%;
+}
+
+#diptych > section > h2{
+  width: 70%;
+  font-size: 2.2em;
+  margin: 0 0;
+}
+#diptych > section > p{
+  width: 90%;
+  line-height: 1.4em;
+  margin-bottom: 3em;
+}
+#diptych > section > a {
+  padding: 1em 2em;
+  text-decoration: none;
+  color: white;
+  background: black;
+}
+#diptych + section{
+  padding: 5% 15%;
+  width: 100%;
+  height: 35em;
+}
+.beauticians{
+  width: 33%;
+  float: left;
+}
+.beauticians > img{
+  width: 90%;
+  height: 23em;
+  display: block;
+  margin: auto;
+}
+.beauticians > div{
+  width: 70%;
+  margin: auto;
+  height: 4em;
+  background: black;
+  padding: 0.8em 0;
+  position: relative;
+  bottom: 2em;
+}
+.beauticians > div > a{
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+.beauticians > div a + a{
+  font-size: 0.8em;
+}
+#promotion{
+  width: 100%;
+  padding: 0 15%;
+  height: 35em;
+}
+#promotion > img{
+  width: 100%;
+}
+#promotion > div{
+  position: relative;
+  top: -22em;
+  left: 6em;
+  width: 40%;
+}
+#promotion > div > span{
+  font-size: 1.1em;
+}
+#promotion > div > p{
+  font-size: 1.5em;
+  line-height: 1.8em;
+}
+#promotion > div > p > strong{
+  font-size: 1.2em;
+}
+#promotion > div > a{
+  background: black;
+  color: white;
+  padding: 1em 2.2em;
+  text-decoration: none;
+}
+#lookbook{
+  width: 100%;
+  padding: 0 15%;
+}
+#lookbook > h3{
+  width: 9em;
+  font-size: 2em;
+  margin: auto;
+}
+#lookbook > hr{
+  width: 1em;
+  font-weight: bolder;
+  font-size: 3em;
+}
+.columns{
+  width: 33%;
+  float: left;
+  padding: 1%;
+}
+.columns >img{
+  width: 100%;
+  padding-bottom: 5%;
+}
+.columns:nth-of-type(2) > img + img{
+  height: 19.3em;
+}
+footer {
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

@@ -1,0 +1,29 @@
+*{
+  box-sizing: border-box;
+}
+header{
+  height: 150px;
+  width: 100%;
+  border: red solid 3px;
+}
+section{
+  height: 500px;
+  width: 100%;
+}
+.small{
+  width: 20%;
+  height: 500px;
+  float:left;
+  border: blue solid 3px;
+}
+.large{
+  width: 40%;
+  height: 500px;
+  float: left;
+  border: green solid 3px;
+}
+footer{
+  height: 150px;
+  width: 100%;
+  border: red solid 3px;
+}

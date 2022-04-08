@@ -1,0 +1,62 @@
+*{
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 800px){
+  header, footer{
+    width: 100%;
+    height: 200px;
+    border: red solid 2px;
+  }
+  section{
+    border: green solid 2px;
+    width: 100%;
+    height: 150px;
+  }
+  p{
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 801px){
+  header{
+    width: 100%;
+    height: 200px;
+    border: red solid 2px;
+  }
+  footer{
+    clear: left;
+    width: 100%;
+    height: 200px;
+    border: red solid 2px;
+  }
+  section{
+    border: green solid 2px;
+    height: 400px;
+    width:33.3333%;
+    float: left;
+  }
+  p{
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 1201px){
+  header{
+    width: 100%;
+    height: 200px;
+    border: red solid 2px;
+  }
+  section{
+    border: green solid 2px;
+    height:400px;
+    width: 33.3333%;
+    float:right;
+  }
+  p{
+    text-align: right;
+  }
+  footer{
+    clear: right;
+    width: 100%;
+    height: 200px;
+    border: red solid 2px;
+  }
+}

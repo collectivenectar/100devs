@@ -1,0 +1,31 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+input{
+  width: 10em;
+  height: 2em;
+  background: whitesmoke;
+  color: black;
+  margin-right: 2em;
+}
+body{
+  padding: 25em;
+}
+button{
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

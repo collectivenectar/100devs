@@ -1,0 +1,134 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+nav{
+  width: 15%;
+  float:left;
+  padding: 20px;
+}
+nav img{
+  width:45%;
+  display: block;
+}
+nav > a{
+  font-weight: bold;
+  color: orange;
+  text-decoration: none;
+}
+nav > a.greylinks{
+  font-size: 15px;
+  display: block;
+  color: dimgrey;
+}
+nav > *{
+  display: inline;
+  padding-bottom: 20px;
+}
+li > a{
+  text-decoration: none;
+  display: block;
+}
+li {
+  list-style-type: none;
+}
+span + img{
+  width: 100%;
+  display: block;
+}
+.greylinks{
+  color: darkgray;
+  font-family: helvetica;
+  font-weight: lighter;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+main > section > section{
+  float: left;
+  width: 50%;
+}
+#elogo{
+  width: 15px;
+  height: 15px;
+}
+section > img + span{
+  color: gold;
+}
+.greytext{
+  color: darkgray;
+  font-family: helvetica;
+  font-weight: lighter;
+  font-size: 0.95em;
+}
+.namespans{
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 0.7em;
+}
+span + span{
+  color: darkgray;
+  font-family: helvetica;
+  font-size: 0.7em;
+  display: block;
+}
+aside{
+  margin-left: 65%;
+  padding-left: 10px;
+}
+section + aside > ul > li{
+  padding-bottom: 10px;
+  margin-right: 20px;
+  border-bottom: solid silver 1px;
+}
+.newsheadings{
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin: 20px 20px 5px 0;
+}
+section > h3{
+  clear: both;
+  margin-left: 15%;
+  margin-right: 20px;
+  padding: 20px 0;
+  border-bottom: solid lightgrey 1px;
+}
+main > section + section > section{
+  clear: both;
+  margin-left: 12%;
+  width: 85%;
+}
+li > img{
+  width: 30%;
+}
+.latestrow{
+  width: 30%;
+  float: left;
+  margin-right: 40px;
+  line-height: 23px;
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

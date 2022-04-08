@@ -1,0 +1,23 @@
+*{
+  box-sizing: border-box;
+}
+header{
+  width: 100%;
+  height: 200px;
+  border: red solid 2px;
+}
+footer{
+  clear: left;
+  width: 100%;
+  height: 200px;
+  border: red solid 2px;
+}
+section{
+  border: green solid 2px;
+  height: 300px;
+  width:33.3333%;
+  float: left;
+}
+p{
+  text-align: center;
+}
