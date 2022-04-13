@@ -1,13 +1,14 @@
 function getFetch(){
-  const choice = document.querySelector('input').value
-  const url = 'https://pokeapi.co/api/v2/pokemon/'+choice
+  const url = 'https://programming-quotes-api.herokuapp.com/quotes/random'
 
   fetch(url)
       .then(res => res.json()) // parse response as JSON
       .then(data => {
-        console.log(data)
+				console.log(data.en, data.author)
+				document.querySelector('h2').innerText = data.en
       })
       .catch(err => {
           console.log(`error ${err}`)
       });
 }
+getFetch()

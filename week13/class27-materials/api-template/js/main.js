@@ -1,3 +1,6 @@
+//Example fetch using pokemonapi.co
+document.querySelector('button').addEventListener('click', getFetch)
+
 function getFetch(){
   const choice = document.querySelector('input').value
   const url = 'https://pokeapi.co/api/v2/pokemon/'+choice
@@ -11,3 +14,4 @@ function getFetch(){
           console.log(`error ${err}`)
       });
 }
+
