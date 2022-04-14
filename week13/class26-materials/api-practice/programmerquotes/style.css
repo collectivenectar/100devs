@@ -1,0 +1,22 @@
+div{
+  display: block;
+  width: 100%;
+  min-height: 10em;
+  padding: 10%;
+}
+div > h2{
+  font-family: "Fjalla One", sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  width: 80%;
+  min-height: 10em;
+}
+section{
+  width: 100%;
+}
+section > h2{
+  text-align: center;
+  height: 3em;
+  display: block;
+  margin: auto;
+}
