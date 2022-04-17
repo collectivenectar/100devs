@@ -297,26 +297,33 @@
 //   }
 // }
 // diamond(5)
+//
+// function moveZeros(arr){
+//   console.log(arr)
+//   let orderedArr = []
+//   let zeros = []
+//   for(let i = 0; i < arr.length; i++){
+//     if(arr[i] === 0 || arr[i] === "0" || arr[i] === []){
+//       zeros.push(0)
+//     }
+//     else{
+//       orderedArr.push(arr[i])
+//     }
+//   }
+//
+//   return orderedArr.concat(zeros)
+// }
+//
+// console.log(moveZeros([1,2,0,1,0,1,0,3,0,1]))
+// console.log(moveZeros([
+//   9, 0, 0, 9, 1, 2, 0,
+//   1, 0, 1, 0, 3, 0, 1,
+//   9, 0, 0, 0, 0, 9
+// ]))
 
-function moveZeros(arr){
-  console.log(arr)
-  let orderedArr = []
-  let zeros = []
-  for(let i = 0; i < arr.length; i++){
-    if(arr[i] === 0 || arr[i] === "0" || arr[i] === []){
-      zeros.push(0)
-    }
-    else{
-      orderedArr.push(arr[i])
-    }
-  }
-
-  return orderedArr.concat(zeros)
+let key = {
+  index: "lore",
+  name: "lore",
+  url: "api/magic-schools/evocation"
 }
-
-console.log(moveZeros([1,2,0,1,0,1,0,3,0,1]))
-console.log(moveZeros([
-  9, 0, 0, 9, 1, 2, 0,
-  1, 0, 1, 0, 3, 0, 1,
-  9, 0, 0, 0, 0, 9
-]))
+console.log(Object.keys(key))
