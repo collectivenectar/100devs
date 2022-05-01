@@ -17,40 +17,12 @@
 // counted[j] could be multiplied to produce money - coin[i] - n * counted[j] === 0
 // online research leans towards recursive solutions, so lets see how I can nest this problems
 
-//starting with only the coins that are equal or less than the value of money,
-//look for cases where the coin or a multiple of that coin could equal money
-//then look in function(money, coins + 1?) How? I could just set it as an function expression
-//and loop through each coin, any coin multiple that equals money is returned as
-//an array, with the first element being the coin, and the second being the multiple
-//at the end I have an array of arrays of possible combinations? [3, 2] for money === 6
-// [[3, 2], [1, 6]] gives me only multiples, that I would also automatically find if I were searching
-//more broadly. Four terms, for example:
-
-// [4, 3, 1, 2] and the money of 10.
-// how do I search broadly? can (4 or multiples of 4 below 10) + any other element(or multiples of that element below 10)
-// sum to equal 10?
-// now I have:
-// all multiples that equal money(starting return value)
-// all possible integers formed from coins[i] or multiples of coins[i],
-
-// I just now need to look through the whole array and see which combinations result in
-// the value of money
-
-// in this case, factorial for the (length - 1) of the returned multiples array, minus r,
-// which changes, according to whether or not the current sum has already reached a value
-// close to moneys value
-
-// example :    1, 2, 3, 4, 5, 6, 7, 8, 9, 2, 4, 6, 8, 3, 6, 9, 4, 8
-
-// looping through from 0 to the end,
-// items like '9' are only a match for anything equal to the value of money - '9' = 1
-// so I could even sort this if it helps, which I think it would, it would stop from
-// iterating over parts of the array that go above the value of money - '9'.
-// so, starting with a sorted array, let's see what I can do.
+// figured out how to get all the possible multiples figured out, but I can't seem to figure
+// out how to
 
 var countChange = function(money, coins) {
   let combinations = 0
-  let multiples = []
+  let multiples = {}
   for(let i = 0; i < coins.length; i++){
     let counter = 0
     if(coins[i] === money){
@@ -63,57 +35,38 @@ var countChange = function(money, coins) {
         }
         else{
           if(counter === money){
-            counter = counter + coins[i]
             combinations++
+            break
+          }
+          else if(counter > money){
+
           }
           else{
-            multiples.push(counter)
-            counter = counter + coins[i]
+            if(multiples[counter]){
+              multiples[counter] = multiples[counter] + 1
+              counter = counter + coins[i]
+            }
+            else{
+              multiples[counter] = 1
+              counter = counter + coins[i]
+            }
           }
         }
       }
-      counter = counter + coins[i]
     }
   }
-  for(let i = 0; i < multiples.length; i++){
-
+  for(let i = 0; i < Object.keys(multiples).length; i++){
+    console.log(recursive(Object.keys(multiples)[i], i, money, multiples))
   }
-  let sorted = multiples.sort((a, b) => {
-    if(a < b){
-      return -1
-    }
-    else if(a > b){
-      return 1
-    }
-    else{
-      return 0
-    }
-  })
-  for(let i = sorted.length; i >= 0; i--){
-    // first, if in sorted there already exists an element with a value that is equal  to
-    // money - sorted[i], combinations++
-    let recursive = (sorted) => {
-      if(sorted.length <= 1){
-        return sorted
-      }
-    }
-    let possibles = sorted.filter((x => x <= money - sorted[i]))
-    for(let j = 0; j < possibles.length; j++){
-      let nextLayer = possibles.filter( x => x < money - sorted[i] - possibles[j])
-      if(nextLayer.length === 0){
-        console.log(money, sorted[i], possibles[j])
-      }
-      else{
-        console.log(nextLayer.length)
-      }
-    }
-    console.log(possibles)
-    //now I have just those that could possibly be combined with sorted[i]
-    //now I need the next set of possibles.
-    // if not that number, is there a number smaller or larger than that in the array that
-    // are equal to money - sorted[i]
-    // if so, combinations++
-  }
-  console.log(multiples)
+  // combinations = combinations + recursive(multiples)
 }
-countChange(10, [1,2,3,4])
+let sum = 0
+function recursive(currentCheck, currentCheckIndex, target, object){
+  if(object[target - currentCheck]){
+    // currentCheck is 5, and I know I have something in the object thats target - currentCheck
+  }
+  //whenever I get a match, add object[target - currentCheck] value, not just ++
+}
+
+
+//countChange(300, [ 5, 10, 20, 50, 100, 200, 500 ])
