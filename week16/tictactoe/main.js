@@ -8,9 +8,11 @@ let form = document.getElementsByTagName('form')
 let playerChosesLetter = document.getElementById('submit')
 let playerChoice = document.getElementById('playerChoice')
 let playerTurn = document.querySelector('#player-turn')
+let reset = document.querySelector('#reset')
 
 tictactoegrid.addEventListener('click', playerSelectSquare)
 playerChosesLetter.addEventListener('click', playerSubmittedLetter)
+reset.addEventListener('click', resetBoard)
 
 class TicTacToeGame {
   constructor(){
@@ -94,14 +96,28 @@ class TicTacToeGame {
           }
       }
       }
+      else if(rows === 0){
+        if(gridArray[rows].join("").length === 3 && gridArray[rows + 1].join("").length === 3 && gridArray[rows + 2].join("").length === 3){
+          window.alert("it's a tie!")
+        }
+      }
     }
   }
   reset(){
     this.playerOnesTurn = true;
-    this.gameState = "in progress";
+    this.gameState = "not yet started";
+    form[0].hidden = false
+    for(let i = 0; i < this.rows.length; i++){
+      for(let j = 0; j < 3; j++){
+        this.rows[i].children[j].innerText = ""
+      }
+    }
+    playerChoice.value = "";
+    playerTurn.innerText = `player 1 turn: you are ${this.playerOnesLetter}`
+    playerTurn.style.background = "green"
+    playerTurn.style.color = "white"
     // clear all innerText values
     // need to clear the form values, too
-    form[0].hidden = false
     //reset html elements
   }
 }
@@ -133,4 +149,8 @@ function playerSubmittedLetter(){
   else{
     window.alert("please choose 'x' or 'o' only")
   }
+}
+
+function resetBoard(){
+  newGame.reset()
 }

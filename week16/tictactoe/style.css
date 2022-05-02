@@ -45,3 +45,19 @@ form{
 section#turn-box + section{
   margin-top: 2rem;
 }
+body > div{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+div > a{
+  text-align: center;
+  margin-top: 5rem;
+  display: block;
+  text-decoration: none;
+  color: red;
+  padding: 2rem;
+}
+div > a:hover{
+  background-color: blue;
+}
