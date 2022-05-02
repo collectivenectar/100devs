@@ -1,0 +1,47 @@
+#tictactoegrid{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20rem;
+}
+#tictactoegrid > *{
+  width: 20rem;
+  display: flex;
+  padding: 0;
+}
+.tictactoebox{
+width: 100%;
+border: solid green 3px;
+text-align: center;
+margin: 0;
+height: 6rem;
+font-size: 5rem;
+}
+form{
+  text-align: center;
+}
+#submit{
+  border: solid black 1px;
+  padding: 1rem;
+}
+#submit:hover{
+  background: lightblue;
+}
+#player-turn{
+  margin-top: 4rem;
+  display: block;
+  height: 6rem;
+  margin-left: 25%;
+  width: 50%;
+}
+#player-turn > label{
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  background: green;
+}
+section#turn-box + section{
+  margin-top: 2rem;
+}

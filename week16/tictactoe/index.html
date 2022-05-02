@@ -8,22 +8,34 @@
   <body>
     <section>
       <div id="tictactoegrid">
-        <div class="row1">
-        <h2 class="tictactoebox">x</h2>
-        <h2 class="tictactoebox">x</h2>
-        <h2 class="tictactoebox">x</h2>
+        <div id="row0">
+          <h2 class="tictactoebox"></h2>
+          <h2 class="tictactoebox"></h2>
+          <h2 class="tictactoebox"></h2>
         </div>
-        <div class="row2">
-        <h2 class="tictactoebox">x</h2>
-        <h2 class="tictactoebox">x</h2>
-        <h2 class="tictactoebox">x</h2>
+        <div id="row1">
+          <h2 class="tictactoebox"></h2>
+          <h2 class="tictactoebox"></h2>
+          <h2 class="tictactoebox"></h2>
         </div>
-        <div class="row3">
-        <h2 class="tictactoebox">x</h2>
-        <h2 class="tictactoebox">x</h2>
-        <h2 class="tictactoebox">x</h2>
+        <div id="row2">
+          <h2 class="tictactoebox"></h2>
+          <h2 class="tictactoebox"></h2>
+          <h2 class="tictactoebox"></h2>
         </div>
       </div>
+    </section>
+    <section id="turn-box">
+      <div id="player-turn">
+        <label for="">player 1 turn</label>
+      </div>
+    </section>
+    <section>
+      <form class="" action="index.html" method="post">
+        <label for="">Player 1: choose 'X' or 'O' </label>
+        <input id="playerChoice" type="text" name="playerChoice" value="" placeholder="enter x or o only">
+        <a id="submit">submit</a>
+      </form>
     </section>
     <script src="main.js" charset="utf-8"></script>
   </body>
