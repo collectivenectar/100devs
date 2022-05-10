@@ -1,3 +1,50 @@
+// class Animal{
+//     constructor(name){
+//         this._name = name
+//     }
+//     get name(){
+//         return this._name
+//     }
+//     speak(){
+//         console.log(`${this._name} makes a sound`)
+//     }
+// }
+
+// class Dog extends Animal{
+//     constructor(name,breed){
+//         super(name)
+//         this._breed = breed
+//     }
+//     get breed(){
+//         return this._breed
+//     }
+//     speak(){
+//         super.speak()
+//         console.log(`${this.name} barks`)
+//     }
+// }
+// class Cat extends Animal{
+//     constructor(name, breed){
+//         super(name)
+//         this._breed = breed
+//     }
+//     get breed(){
+//         return this._breed
+//     }
+//     speak(){
+//         super.speak()
+//         console.log(`${this.name} meows`)
+//     }
+// }
+
+
+
+
+
+
+
+
+
 class Animal{
     constructor(name){
         this._name = name
@@ -20,10 +67,7 @@ class Dog extends Animal{
     speak(){
         super.speak()
         console.log(`${this.name} barks`)
-    }
-    woof(){
-      this.hasMadeNoise = true
-    }
+    }    
 }
 class Cat extends Animal{
     constructor(name,breed){
@@ -36,7 +80,7 @@ class Cat extends Animal{
     speak(){
         super.speak()
         console.log(`${this.name} meows`)
-    }
+    }    
 }
 
 let simba = new Dog('Simba','Shepard')
@@ -48,5 +92,3 @@ let farm = [simba,machi,salem]
 for( a of farm ){
     a.speak()
 }
-simba.woof()
-console.log(simba.hasMadeNoise)
