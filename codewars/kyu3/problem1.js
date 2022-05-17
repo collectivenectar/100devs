@@ -163,22 +163,31 @@ function sudoku(puzzle) {
   }
 
   // now with all these functions returning the current object, I can work with data as it's changed
-  // findNumbers in adjacent column or row
+  // findNumbers in adjacent column or row returns array of positions, each row and column in array
   let findNumbersInAdjacent = function(number, subSquare){
     let subs = subGroups()
     let found = []
-    for(let subRow = 0; subRow < 3; subRow++){
-      let sameRow = Math.floor(subSquare / 3) * 3 + subRow
-      if(subs[sameRow].includes(`${number}`)){
-        let index = subs[sameRow].indexOf(`${number}`)
-        found.push([sameRow, index])
+    if(subs[subSquare].includes(number)){
+      let index = subs[subSquare].indexOf(number)
+      found.push([Math.floor(subSquare / 3) + Math.floor(index / 3), (subSquare % 3) * 3 + index % 3])// row, column
+    }
+    for(let eachSubRow = 0; eachSubRow < 3; eachSubRow++){
+      let subGroupRow = Math.floor(subSquare / 3)
+      let sameRow = subGroupRow + eachSubRow
+      if(subs[sameRow].includes(`${number}`) && subSquare !== sameRow){
+        let subGroupIndex = subs[sameRow].indexOf(`${number}`)
+        let adjSameNum = [Math.floor(subGroupIndex / 3) + subGroupRow * 3, subGroupIndex % 3 + (sameRow % 3) * 3]
+        found.push(adjSameNum)
       }
     }
     for(let subCol = 0; subCol < 3; subCol++){
-      let sameCol = subSquare % 3 + subCol
-      if(subs[sameCol].includes(`${number}`)){
+      let sameCol = (subSquare % 3) + (subCol * 3)
+      if(subs[sameCol].includes(`${number}`) && subSquare !== sameCol){
         let index = subs[sameCol].indexOf(`${number}`)
-        found.push([sameCol, index])
+        let adjSameNum = [Math.floor(index / 3) + subCol * 3, index % 3 + (sameCol % 3) * 3]
+        if(!found.includes(adjSameNum)){
+          found.push(adjSameNum)
+        }
       }
     }
     return found
@@ -190,20 +199,44 @@ function sudoku(puzzle) {
       let possibleSpots = []
       currentPuzzleState[subGroup].forEach((element, index, array) => {
         if(element === "0" || element === 0){
-          console.log(Math.floor(subGroup / 3), Math.floor(index / 3), subGroup % 3, index % 3)
-          possibleSpots.push([Math.floor(subGroup / 3) * 3 + Math.floor(index / 3), subGroup % 3 + index % 3])
+          currentPuzzleState[subGroup]
+          possibleSpots.push([Math.floor(index / 3) + (Math.floor(subGroup / 3) * 3), (subGroup % 3 * 3) + index % 3])
         }
       })
-      // so now we looked at possible spots for each subGroup for a number.
-      // adding possibleSpots to available gives us a master list of all possible
-      // positions we could place a number, not counting restrictions.
-      // now to remove any positions that share a column or row with that same numbers
-      // using findNumbersInAdjacent(number, )
       available.push(possibleSpots)
+    }
+    // Now to look through possibles for conflicting same numbers in other rows.
+    // Looking through findAvailableSpots based on the results of highestCount(),
+    // The highest occurring number looks for all possible spots to place the number
+    // looking through all empty spots in available array by subGroup [0-8]
+    let filtered = []
+    for(let possibleSubGroup = 0; possibleSubGroup < available.length; possibleSubGroup++){
+      for(let possibleSpot = 0; possibleSpot < available[possibleSubGroup].length; possibleSpot++){
+        // walking through what I'm doing, I'm going through the list of available positions by *subGroup*
+        // looking to see which adjacent rows or columns(by subGroup) have the same number I'm looking to add
+        // the current position with an "0" in it, I want to put [number] here, is [number] in adjacent subGroups?
+        // Looking in rows of 3 or columns of 3 using findNumbersInAdjacent(number, possibleSubGroup)
+        // returns an array of arrays of all the [number]s in the sudokuObject at this time.
+        let position = available[possibleSubGroup][possibleSpot]
+        let adjacentSameNumbers = findNumbersInAdjacent(number, possibleSubGroup)
+        filtered.push(available[possibleSubGroup].filter((element, index, array) => {
+          for(let eachAdj = 0; eachAdj < adjacentSameNumbers.length; eachAdj++){
+            // if the available spot is good to use, push it to filtered
+            // position is [row, column]
+            // element is [row, column]
+            if(position[0] === element[0] || position[1] === element[1]){
+              if(position[0] !== 0){
+                console.log(position, element)
+              }
+            }
+          }
+        }))
+      }
     }
     return available
   }
-  console.log(findAvailableSpots(highestCount()[0]))
+  console.log(Object.keys(highestCount()[0])[0])
+  console.log(findAvailableSpots(Object.keys(highestCount()[0])[0])[0])
   // Now to begin looking
   // starting with highestCount, search for available spots
   // in the grid to place the number by looking through
@@ -211,7 +244,7 @@ function sudoku(puzzle) {
   // let sameRow = puzzle[Math.floor(index / 9)]
   // let sameCol = allColumns[index % 9]
   // let sameSubGroup = subGroups[Math.floor((index % 9) / 3) + Math.floor((Math.floor(index / 9)) / 3) * 3]
-  console.log(sudoku)
+  return sudokuObject
 }
 
 var puzzle = [
