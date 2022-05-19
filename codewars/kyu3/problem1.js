@@ -77,6 +77,41 @@ function sudoku(puzzle) {
     //the working version of the sudoku as an array, accessible by index [0-80]
     return Object.values(sudokuObject)
   }
+  let printSudokuObj = function(){
+    console.log("  - - -   - - -   - - -")
+    for(let row = 0; row < 9; row++){
+      let rowToPrint = ["|"]
+      if(row === 2 || row === 5){
+        for(let column = 0; column < 9; column++){
+          // if row is 2 or 5, add - - - - - - - - -
+          if(column === 2 || column === 5){
+            rowToPrint.push(`${sudokuObject[Object.keys(sudokuObject)[(row * 9) + column]]} |`)
+          }
+          else{
+            rowToPrint.push(`${sudokuObject[Object.keys(sudokuObject)[(row * 9) + column]]}`)
+          }
+        }
+        rowToPrint.push("|")
+        console.log(rowToPrint.join(" "))
+        console.log(`  - - -   - - -   - - -`)
+      }
+      else{
+        for(let column = 0; column < 9; column++){
+          if(column === 2 || column === 5){
+            rowToPrint.push(`${sudokuObject[Object.keys(sudokuObject)[(row * 9) + column]]} |`)
+          }
+          else{
+            rowToPrint.push(sudokuObject[Object.keys(sudokuObject)[(row * 9) + column]])
+          }
+        }
+        rowToPrint.push("|")
+        console.log(rowToPrint.join(" "))
+      }
+
+    }
+    console.log("  - - -   - - -   - - -")
+  }
+  printSudokuObj()
   // returns a running version of the current sudoku objects as an array of 9 elements, each a column of 9 cells
   let sudokuRows = function(){
     let array = [[],[],[],[],[],[],[],[],[]]
@@ -150,10 +185,13 @@ function sudoku(puzzle) {
       array.push(number)
     }
     return array.sort((a, b) => {
-      if(a[Object.keys(a)[0]] > b[Object.keys(b)[0]]){
+      if(a[Object.keys(a)[0]] > 9 || b[Object.keys(b)[0]] > 9){
+        console.log("sudoku has more than 9 of one number")
+      }
+      if(a[Object.keys(a)[0]] > b[Object.keys(b)[0]] && a[Object.keys(a)[0]] !== 9){
         return -1
       }
-      else if(a[Object.keys(a)[0]] < b[Object.keys(b)[0]]){
+      else if(a[Object.keys(a)[0]] < b[Object.keys(b)[0]] || a[Object.keys(a)[0]] === 9){
         return 1
       }
       else{
@@ -164,86 +202,111 @@ function sudoku(puzzle) {
 
   // now with all these functions returning the current object, I can work with data as it's changed
   // findNumbers in adjacent column or row returns array of positions, each row and column in array
-  let findNumbersInAdjacent = function(number, subSquare){
+  let findNumbersInAdjacent = function(number){
     let subs = subGroups()
     let found = []
-    if(subs[subSquare].includes(number)){
-      let index = subs[subSquare].indexOf(number)
-      found.push([Math.floor(subSquare / 3) + Math.floor(index / 3), (subSquare % 3) * 3 + index % 3])// row, column
-    }
-    for(let eachSubRow = 0; eachSubRow < 3; eachSubRow++){
-      let subGroupRow = Math.floor(subSquare / 3)
-      let sameRow = subGroupRow + eachSubRow
-      if(subs[sameRow].includes(`${number}`) && subSquare !== sameRow){
-        let subGroupIndex = subs[sameRow].indexOf(`${number}`)
-        let adjSameNum = [Math.floor(subGroupIndex / 3) + subGroupRow * 3, subGroupIndex % 3 + (sameRow % 3) * 3]
-        found.push(adjSameNum)
-      }
-    }
-    for(let subCol = 0; subCol < 3; subCol++){
-      let sameCol = (subSquare % 3) + (subCol * 3)
-      if(subs[sameCol].includes(`${number}`) && subSquare !== sameCol){
-        let index = subs[sameCol].indexOf(`${number}`)
-        let adjSameNum = [Math.floor(index / 3) + subCol * 3, index % 3 + (sameCol % 3) * 3]
-        if(!found.includes(adjSameNum)){
-          found.push(adjSameNum)
-        }
+    for(let subSquare = 0; subSquare < 9; subSquare++){
+      if(subs[subSquare].includes(number)){
+        let index = subs[subSquare].indexOf(number)
+        found.push([Math.floor(subSquare / 3) * 3 + Math.floor(index / 3), (subSquare % 3) * 3 + index % 3])
       }
     }
     return found
   }
   let findAvailableSpots = function(number){
     let currentPuzzleState = subGroups()
-    let available = []
+    let available = {}
     for(let subGroup = 0; subGroup < 9; subGroup++){
-      let possibleSpots = []
+      available[subGroup] = []
       currentPuzzleState[subGroup].forEach((element, index, array) => {
         if(element === "0" || element === 0){
-          currentPuzzleState[subGroup]
-          possibleSpots.push([Math.floor(index / 3) + (Math.floor(subGroup / 3) * 3), (subGroup % 3 * 3) + index % 3])
+          available[subGroup].push([Math.floor(index / 3) + (Math.floor(subGroup / 3) * 3), (subGroup % 3 * 3) + index % 3])
         }
       })
-      available.push(possibleSpots)
     }
     // Now to look through possibles for conflicting same numbers in other rows.
     // Looking through findAvailableSpots based on the results of highestCount(),
     // The highest occurring number looks for all possible spots to place the number
     // looking through all empty spots in available array by subGroup [0-8]
-    let filtered = []
-    for(let possibleSubGroup = 0; possibleSubGroup < available.length; possibleSubGroup++){
+
+    // an array to filter out existing same numbers in adjacent rows/columns
+    let availablePositionsFilter = []
+    for(let possibleSubGroup = 0; possibleSubGroup < Object.keys(available).length; possibleSubGroup++){
+      // walking through what I'm doing, I'm going through the list of available positions by *subGroup*
+      // looking to see which adjacent rows or columns(by subGroup) have the same number I'm looking to add
+
+      // generate list of all [number]s in the sudoku currently
+      let adjacentSameNumbers = findNumbersInAdjacent(number)
+
+      // the current position with an "0" in it, I want to put [number] here, but is [number] in adjacent subGroups?
+      // Looking in rows of 3 or columns of 3 using findNumbersInAdjacent(number, possibleSubGroup)
+      // returns an array of arrays of all the [number]s in the sudokuObject at this time by subGroup
       for(let possibleSpot = 0; possibleSpot < available[possibleSubGroup].length; possibleSpot++){
-        // walking through what I'm doing, I'm going through the list of available positions by *subGroup*
-        // looking to see which adjacent rows or columns(by subGroup) have the same number I'm looking to add
-        // the current position with an "0" in it, I want to put [number] here, is [number] in adjacent subGroups?
-        // Looking in rows of 3 or columns of 3 using findNumbersInAdjacent(number, possibleSubGroup)
-        // returns an array of arrays of all the [number]s in the sudokuObject at this time.
-        let position = available[possibleSubGroup][possibleSpot]
-        let adjacentSameNumbers = findNumbersInAdjacent(number, possibleSubGroup)
-        filtered.push(available[possibleSubGroup].filter((element, index, array) => {
-          for(let eachAdj = 0; eachAdj < adjacentSameNumbers.length; eachAdj++){
-            // if the available spot is good to use, push it to filtered
-            // position is [row, column]
-            // element is [row, column]
-            if(position[0] === element[0] || position[1] === element[1]){
-              if(position[0] !== 0){
-                console.log(position, element)
-              }
-            }
+        let emptyPosition = available[possibleSubGroup][possibleSpot]
+
+
+        // now check to see if shares the same row or column - if they do,
+        // remove the possibleSpot from available[possibleSubGroup]
+
+        // if the position shares a subGroup with the same number we're looking to add
+        for(let sameNum = 0; sameNum < adjacentSameNumbers.length; sameNum++){
+          let adjNum = adjacentSameNumbers[sameNum]
+          let emptySubRow = Math.floor(emptyPosition[0] / 3)
+          let emptySubCol = Math.floor(emptyPosition[1] / 3)
+          let sameNumSubRow = Math.floor(adjNum[0] / 3)
+          let sameNumSubCol = Math.floor(adjNum[1]/ 3)
+          if(sameNumSubRow === emptySubRow && sameNumSubCol === emptySubCol){
+            // if in the same subGroup(in the same 3x3 box)
+            // add possible position to availablePositionsFilter
+            availablePositionsFilter.push(emptyPosition)
+            break
           }
-        }))
+          else if(emptyPosition[0] === adjNum[0] || emptyPosition[1] === adjNum[1]){
+            // if in the same row or column
+            availablePositionsFilter.push(emptyPosition)
+            break
+          }
+          else{
+          }
+        }
       }
     }
-    return available
+    let availableArray = []
+    Object.values(available).forEach((element, index, array) => {
+      for(let i = 0; i < element.length; i++){
+        availableArray.push(array[index][i])
+      }
+    })
+    return availableArray.filter((element, index, array) => {
+      if(!availablePositionsFilter.includes(availableArray[index])){
+        return element
+      }
+    })
   }
-  console.log(Object.keys(highestCount()[0])[0])
-  console.log(findAvailableSpots(Object.keys(highestCount()[0])[0])[0])
-  // Now to begin looking
-  // starting with highestCount, search for available spots
-  // in the grid to place the number by looking through
-  // findNumbersInAdjacent() using the same number but checking for
-  // let sameRow = puzzle[Math.floor(index / 9)]
-  // let sameCol = allColumns[index % 9]
-  // let sameSubGroup = subGroups[Math.floor((index % 9) / 3) + Math.floor((Math.floor(index / 9)) / 3) * 3]
+  let numberToLookFor = function(){
+    console.log(Object.entries(highestCount()))
+    return Object.keys(highestCount()[0])[0]
+  }
+  // now to being adding numbers
+  let solveSudoku = function(){
+    let howManyZerosLeft = function(){
+      return Object.values(sudokuObject).filter( element => element === '0').length
+    }
+    while(howManyZerosLeft() > 0){
+      let numberToPlace = numberToLookFor()
+      console.log(numberToPlace)
+      if(findAvailableSpots(numberToPlace).length > 0){
+        let availableSpot = findAvailableSpots(numberToPlace)
+        sudokuObject[availableSpot[0][0] * 9 + availableSpot[0][1]] = numberToPlace
+        printSudokuObj()
+      }
+      else{
+        console.log("no available spot", numberToPlace)
+        break
+      }
+    }
+  }
+  solveSudoku()
   return sudokuObject
 }
 
@@ -258,4 +321,4 @@ var puzzle = [
       [0,0,0,4,1,9,0,0,5],
       [0,0,0,0,8,0,0,7,9]]
 
-console.log(sudoku(puzzle))
+sudoku(puzzle)
