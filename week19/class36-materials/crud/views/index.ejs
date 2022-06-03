@@ -10,6 +10,26 @@
       <input type="text" name="name" value="name">
       <input type="text" name="quote" value="quote">
       <button type="submit" name="button">Submit</button>
+      <h2> Quotes </h2>
+      <!-- loop -->
+      <ul class="quotes">
+        <% for(var i = 0; i < quotes.length; i++){%>
+          <li class="quote">
+          <span><%= quotes[i].name %></span>
+          <span><%= quotes[i].quote %></span>
+          </li>
+          <% } %>
+      </ul>
     </form>
+    <div>
+  <h2>Darth Vadar invades!</h2>
+  <p>
+    Replace first Yoda's quote with a quote written by Darth Vadar
+  </p>
+  <button id="update-button">Replace Yoda's quote</button>
+</div>
+<script src="/main.js">
+
+</script>
   </body>
 </html>

@@ -21,52 +21,8 @@
 // out how to
 
 var countChange = function(money, coins) {
-  let combinations = 0
-  let multiples = {}
-  for(let i = 0; i < coins.length; i++){
-    let counter = 0
-    if(coins[i] === money){
-      combinations++
-    }
-    else if(coins[i] < money){
-      while(counter <= money){
-        if(counter === 0){
-          counter = counter + coins[i]
-        }
-        else{
-          if(counter === money){
-            combinations++
-            break
-          }
-          else if(counter > money){
-
-          }
-          else{
-            if(multiples[counter]){
-              multiples[counter] = multiples[counter] + 1
-              counter = counter + coins[i]
-            }
-            else{
-              multiples[counter] = 1
-              counter = counter + coins[i]
-            }
-          }
-        }
-      }
-    }
-  }
-  for(let i = 0; i < Object.keys(multiples).length; i++){
-    console.log(recursive(Object.keys(multiples)[i], i, money, multiples))
-  }
-  // combinations = combinations + recursive(multiples)
-}
-let sum = 0
-function recursive(currentCheck, currentCheckIndex, target, object){
-  if(object[target - currentCheck]){
-    // currentCheck is 5, and I know I have something in the object thats target - currentCheck
-  }
-  //whenever I get a match, add object[target - currentCheck] value, not just ++
+  //for each coin, 
 }
 
 
-//countChange(300, [ 5, 10, 20, 50, 100, 200, 500 ])
+countChange(300, [ 5, 10, 20, 50, 100, 200, 500 ])
