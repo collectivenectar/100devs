@@ -7,7 +7,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
-MongoClient.connect('mongodb+srv://collectivenectar:testingstarwars123@cluster0.lilgo.mongodb.net/?retryWrites=true&w=majority', {useUnifiedTopology: true})
+MongoClient.connect('mongodb+srv://username:password@cluster0.lilgo.mongodb.net/?retryWrites=true&w=majority', {useUnifiedTopology: true})
   .then(client => {
     console.log('Connected to Database')
     const db = client.db('star-wars-quotes')
