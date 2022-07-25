@@ -9,7 +9,7 @@
 // Invalid characters should be ignored.
 
 //looks simple enough, if there is one of these four letters, do one of these four things
-
+//
 
 function parse( data )
 {
