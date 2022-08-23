@@ -22,6 +22,17 @@
 
 // Then begin the recursive search.
 
+// create a temp array to store paired elements to remove
+// Then loop through the array, looking for adjacent elements that when added
+// together (using the 'dir' enum object) cancel out to 0. If a pair is found,
+// Add it to the toRemove array.
+
+// If none are found, return the array.
+
+// If a pair is found, remove the pair, and then return the value of calling the
+// function (itself) again on the newly modified array.
+
+
 function dirReduc(arr){
   let dir = {
     "north": 1,
